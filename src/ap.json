@@ -1,0 +1,13 @@
+{
+    "estados": ["q0", "q1", "qf"],
+    "alfabeto": ["a", "b"],
+    "transicoes": [
+        {"q0,a,e": "q0,B"},
+        {"q0,b,B": "q1,e"},
+        {"q0,?,?": "qf,e"},
+        {"q1,b,B": "q1,e"}, 
+        {"q1,?,?": "qf,e"}
+        ],
+    "estado_inicial": ["q0"],
+    "estado_final": ["qf"]
+}

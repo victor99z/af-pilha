@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>AP</title>
+</head>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    function verifica(e){
+        e.preventDefault()
+        words = document.querySelector('#palavras').value;
+        json = document.querySelector('#json').value;
+        console.log(words, JSON.stringify(json))
+    }
+</script>
+<body>
+    <div class="container" style="margin-top:5%">
+        <h1>Simulador de automato finito com pilha</h1>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Insira aqui as informacoes do AP</label>
+                <textarea class="form-control rounded-0" id="json" rows="10">
+                {
+                    "estados": ["q0", "q1", "qf"],
+                    "alfabeto": ["a", "b"],
+                    "transicoes": [
+                        {"q0,a,e": "q0,B"},
+                        {"q0,b,B": "q1,e"},
+                        {"q0,?,?": "qf,e"},
+                        {"q1,b,B": "q1,e"},
+                        {"q1,?,?": "qf,e"}
+                        ],
+                    "estado_inicial": ["q0"],
+                    "estado_final": ["qf"]
+                }
+                </textarea>
+            </div>
+            <div class="form-group">
+              <label for="palavras_reconhecimento">Palavras para reconhecimento:</label>
+              <input type="text" class="form-control" value="aabb,ab,abab" id="palavras">
+              <label for="aviso">Use "," para separar as palavras</label>
+            </div>
+            <button type="submit" onclick="verifica(event)" class="btn btn-primary" style="width: 100%;">Verificar</button>
+          </form>
+    </div>
+</body>
+</html>
