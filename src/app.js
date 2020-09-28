@@ -1,6 +1,6 @@
 const ap = require('./ap.json')
 
-let palavras = "aabb,ab,aaabbb,abb"
+let palavras = "aabb,ab,aaaab,abb,aaabbb"
 palavras = palavras.split(",")
 
 let pilha = ''
@@ -41,10 +41,7 @@ function testaLetra(letra){
                             console.log(`add ${transicao_aux[2]} na pilha, pilha atual: ${pilha}`)
                             
                         }
-                        if(pilha == '' && cont_letras.length == palavra.length){
-                            return false;
-                            break;
-                        }
+                        
                     }
                 }catch(error){
                     // Try catch para situacao em que o loop nao consegue acessar alguma transicao
@@ -62,14 +59,19 @@ function testaLetra(letra){
 
 function testaPalavra(palavra){
     let cont_letras = ''
+    let cont_aux = 0
     for(i = 0; i < palavra.length; i++){
         cont_letras += palavra[i]
-        if(testaLetra(palavra[i]) == false){
-            console.log("Rejeita");
-            break;
-        }
         console.log("situaçao da fita: ",cont_letras)
-        console.log("\n")
+        if(testaLetra(palavra[i]) === null){
+            cont_aux++;
+        }
+    }
+
+    if(cont_aux-1 <= 0){
+        console.log("aceita")
+    }else{
+        console.log("rejeita")
     }
 
     // Limpa a "pilha"
