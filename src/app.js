@@ -13,9 +13,12 @@ function verifica(event){
 
     document.querySelector("#resultado_af").innerHTML = ''
     ap = document.querySelector('#json').value
-    palavras = document.querySelector('#palavras').value    
     ap = JSON.parse(ap)
+    palavras = document.querySelector('#palavras').value  
+    
     palavras = palavras.split(",")
+
+    console.log(ap, palavras)
 
     let pilha = ''
 
